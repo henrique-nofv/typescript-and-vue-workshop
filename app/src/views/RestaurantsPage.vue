@@ -1,4 +1,5 @@
 <script lang="ts">
+import { defineComponent } from 'vue';
 import NewRestaurantForm from '../components/NewRestaurantForm.vue'
 import RestaurantCard from '../components/RestaurantCard.vue'
 import SideMenu from '../components/SideMenu.vue'
@@ -10,7 +11,7 @@ type DataShape = {
   showNewForm: boolean,
 }
 
-export default {
+export default defineComponent({
   components: {
     NewRestaurantForm,
     RestaurantCard,
@@ -78,7 +79,7 @@ export default {
       this.showNewForm = true
     }
   },
-}
+})
 </script>
 
 <template>
