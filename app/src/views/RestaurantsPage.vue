@@ -14,7 +14,7 @@ export default defineComponent({
   },
   setup() {
     const filterText = ref('');
-    const restaurantList = ref([
+    const restaurantList = ref<Restaurant[]>([
       {
         id: '9f995ce4-d2fc-4d00-af1d-6cb1647c6bd3',
         name: 'Quiche From a Rose',
