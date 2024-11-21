@@ -1,21 +1,24 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import { restaurantStatusList } from '@/constants';
+import type { Restaurant } from '@/types';
 import { v4 as uuidv4 } from 'uuid'
+import { ref } from 'vue';
 
-export default defineComponent({
-  emits: ['add-new-restaurant', 'cancel-new-restaurant'],
-  data: () => ({
-    newRestaurant: {
-      id: uuidv4(),
-      name: '',
-      address: '',
-      website: '',
-      status: 'Want to Try',
-    },
-    restaurantStatusList
-  }),
-})
+const newRestaurant = ref({
+  id: uuidv4(),
+  name: '',
+  address: '',
+  website: '',
+  status: 'Want to Try',
+});
+
+
+const emits = defineEmits<{
+  (e : 'add-new-restaurant', restaurant: Restaurant): void,
+  (e : 'cancel-new-restaurant'): void
+}>();
+
+    
 </script>
 
 <template>
@@ -53,14 +56,10 @@ export default defineComponent({
       </div>
       <div class="field">
         <div class="buttons">
-          <button @click="$emit('add-new-restaurant', newRestaurant)" class="button is-success">Create</button>
-          <button @click="$emit('cancel-new-restaurant')" class="button is-light">Cancel</button>
+          <button @click="emits('add-new-restaurant', newRestaurant)" class="button is-success">Create</button>
+          <button @click="emits('cancel-new-restaurant')" class="button is-light">Cancel</button>
         </div>
       </div>
     </div>
   </form>
 </template>
-
-<style></style>import { defineComponent } from 'vue';
-import { restaurantStatusList } from '@/constants';
-
